@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function Navbar() {
+const Navbar = () => {
   return (
     <header className="bg-surface border-secondary fixed h-auto w-full border-b">
       <nav
@@ -34,6 +34,6 @@ function Navbar() {
       </nav>
     </header>
   );
-}
+};
 
 export default Navbar;
