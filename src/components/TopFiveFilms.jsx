@@ -1,6 +1,5 @@
 import React from "react";
-import useGetFromAPI from "../hooks/useGetFromAPI.js";
-import SearchResults from "./SearchResults.jsx";
+import TopFive from "./TopFive";
 
 const searchResultsGridLayout = [
   { id: "name", label: "Film Name" },
@@ -8,19 +7,9 @@ const searchResultsGridLayout = [
   { id: "details", label: "See Details" },
 ];
 
+const searchEntityType = "films";
 const TopFiveFilms = () => {
-  const { data, loading, error } = useGetFromAPI("/films/top?amount=5");
-
-  return (
-    <section className="flex flex-col items-center justify-center gap-4">
-      <h1 className="text-primary pt-0 text-center text-4xl font-extrabold">
-        View our Top 5 Rented Films
-      </h1>
-      <SearchResults
-        {...{ searchResultsGridLayout, data, loading, error }}
-      ></SearchResults>
-    </section>
-  );
+  return <TopFive {...{ searchEntityType, searchResultsGridLayout }} />;
 };
 
 export default TopFiveFilms;

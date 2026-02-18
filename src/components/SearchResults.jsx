@@ -1,13 +1,19 @@
 import React from "react";
-import FilmDetailsButton from "./FilmDetailsButton";
-import toTitleCase from "../utils/formatting";
+import SearchResultsFilms from "./SearchResultsFilms.jsx";
+import SearchResultsActors from "./SearchResultsActors.jsx";
 
 const borderVariants = {
   none: "bg-surface border-secondary h-1/2 ",
   bordered: "bg-surface border-secondary h-1/2  border",
 };
 
-const SearchResults = ({ searchResultsGridLayout, data, loading, error }) => {
+const SearchResults = ({
+  searchEntityType,
+  searchResultsGridLayout,
+  data,
+  loading,
+  error,
+}) => {
   console.log(data);
   console.log(data?.length);
 
@@ -32,7 +38,8 @@ const SearchResults = ({ searchResultsGridLayout, data, loading, error }) => {
                 <div
                   key={option.id}
                   className={
-                    "border-secondary border px-4 py-2 text-center" +
+                    `border-secondary h-full w-full content-center items-center
+                    border px-4 py-2 text-center` +
                     (option.id === "name" ? " col-span-3" : "")
                   }
                 >
@@ -40,22 +47,12 @@ const SearchResults = ({ searchResultsGridLayout, data, loading, error }) => {
                 </div>
               ))}
             </div>
-            {data.map((option) => (
-              <div
-                key={option.film_id}
-                className="border-secondary grid w-full items-center border
-                  py-2"
-                style={{
-                  gridTemplateColumns: `repeat(${searchResultsGridLayout.length + 2}, minmax(0, 1fr))`,
-                }}
-              >
-                <div className="col-span-3 text-center">
-                  {toTitleCase(option.title)}
-                </div>
-                <div className="text-center">{option.film_id}</div>
-                <FilmDetailsButton buttonFilmID={option.film_id} />
-              </div>
-            ))}
+            {searchEntityType === "films" && (
+              <SearchResultsFilms {...{ data, searchResultsGridLayout }} />
+            )}
+            {searchEntityType === "actors" && (
+              <SearchResultsActors {...{ data, searchResultsGridLayout }} />
+            )}
           </div>
         )}
         {data?.length === 0 && (
