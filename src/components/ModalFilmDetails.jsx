@@ -4,7 +4,7 @@ import useGetFromAPI from "../hooks/useGetFromAPI";
 import toTitleCase from "../utils/formatting";
 import XIcon from "../assets/XIcon.svg";
 
-const FilmDetailsModal = ({ open, modalFilmID, onClose }) => {
+const ModalFilmDetails = ({ open, modalFilmID, onClose }) => {
   let requestPath;
   if (open && modalFilmID) {
     requestPath = `/films/${modalFilmID}`;
@@ -85,4 +85,4 @@ const FilmDetailsModal = ({ open, modalFilmID, onClose }) => {
   );
 };
 
-export default FilmDetailsModal;
+export default ModalFilmDetails;
