@@ -2,6 +2,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 import useGetFromAPI from "../hooks/useGetFromAPI";
 import toTitleCase from "../utils/formatting";
+import XIcon from "../assets/XIcon.svg";
 
 const FilmDetailsModal = ({ open, modalFilmID, onClose }) => {
   let requestPath;
@@ -20,12 +21,11 @@ const FilmDetailsModal = ({ open, modalFilmID, onClose }) => {
   return createPortal(
     <>
       <div
-        className="fixed top-0 right-0 bottom-0 left-0 z-100 bg-black
-          opacity-70"
+        className="fixed top-0 right-0 bottom-0 left-0 z-50 bg-black opacity-70"
         onClick={onClose}
       />
       <div
-        className="text-foreground bg-surface fixed top-1/2 left-1/2 z-100 h-1/2
+        className="text-foreground bg-surface fixed top-1/2 left-1/2 z-50 h-1/2
           w-1/2 max-w-md -translate-x-1/2 -translate-y-1/2 transform p-5"
       >
         {loading && <div className="text-xl font-medium">Loading posts...</div>}
@@ -40,11 +40,7 @@ const FilmDetailsModal = ({ open, modalFilmID, onClose }) => {
                 className="btn-std item-center h-5 w-5 justify-center"
                 onClick={onClose}
               >
-                <img
-                  className="h-5 w-5"
-                  src="src\assets\X-Icon.svg"
-                  alt="Close Popup Button"
-                />
+                <img className="h-5 w-5" src={XIcon} alt="Close Popup Button" />
               </button>
             </div>
             <p className="text-lg text-neutral-400">

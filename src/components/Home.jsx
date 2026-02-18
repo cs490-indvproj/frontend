@@ -3,7 +3,7 @@ import TopFiveFilms from "./TopFiveFilms";
 
 const Home = () => {
   return (
-    <main className="bg-background min-h-screen pt-20">
+    <main className="bg-background min-h-screen pt-25">
       <TopFiveFilms></TopFiveFilms>
     </main>
   );
