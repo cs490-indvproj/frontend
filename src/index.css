@@ -8,3 +8,9 @@
   --color-accent: #ffd60a;
   --color-foreground: #f0f0f0;
 }
+
+@layer components {
+  .btn-std {
+    @apply bg-secondary hover:text-accent rounded-full text-center transition duration-300 hover:cursor-pointer;
+  }
+}
