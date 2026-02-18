@@ -1,8 +1,7 @@
 import React from "react";
-import ButtonFilmDetails from "./ButtonFilmDetails";
 import toTitleCase from "../utils/formatting";
 
-const SearchResultsFilms = ({ data, searchResultsGridLayout }) => {
+const SearchResultsActorFilms = ({ data, searchResultsGridLayout }) => {
   return (
     <div className="flex flex-col items-center justify-center">
       <div
@@ -17,8 +16,7 @@ const SearchResultsFilms = ({ data, searchResultsGridLayout }) => {
             key={option.id}
             className={
               `border-secondary h-full w-full content-center items-center border
-              px-4 py-2 text-center` +
-              (option.id === "name" ? " col-span-3" : "")
+              py-2 text-center` + (option.id === "name" ? " col-span-3" : "")
             }
           >
             {option.label}
@@ -34,14 +32,14 @@ const SearchResultsFilms = ({ data, searchResultsGridLayout }) => {
           }}
         >
           <div className="col-span-3 text-center">
-            {toTitleCase(option.title)}
+            {toTitleCase(option.film)}
           </div>
           <div className="text-center">{option.film_id}</div>
-          <ButtonFilmDetails buttonFilmID={option.film_id} />
+          <div className="text-center">{option.count}</div>
         </div>
       ))}
     </div>
   );
 };
 
-export default SearchResultsFilms;
+export default SearchResultsActorFilms;
