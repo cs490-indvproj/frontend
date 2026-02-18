@@ -16,6 +16,8 @@ const searchResultsGridLayout = [
   { id: "details", label: "See Details" },
 ];
 
+const searchEntityType = "films";
+
 const FilmSearch = () => {
   const [selectedSearchType, setSelectedSearchType] = useState("title");
   const [searchQuery, setSearchQuery] = useState("");
@@ -34,7 +36,7 @@ const FilmSearch = () => {
         {...{ searchTypeObjArray, selectedSearchType, setSelectedSearchType }}
       ></SearchDropdown>
       <SearchResults
-        {...{ searchResultsGridLayout, data, loading, error }}
+        {...{ searchEntityType, searchResultsGridLayout, data, loading, error }}
       ></SearchResults>
     </section>
   );
