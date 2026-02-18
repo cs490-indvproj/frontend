@@ -4,7 +4,6 @@ const SearchBar = ({ setSearchQuery }) => {
   function processSubmit(e) {
     e.preventDefault();
     setSearchQuery(e.target.query.value);
-    console.log(e.target.query.value);
   }
 
   return (

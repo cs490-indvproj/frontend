@@ -31,6 +31,7 @@ const FilmSearch = () => {
 
   return (
     <section className="flex flex-col items-center justify-center gap-4">
+      <h1 className="text-primary text-4xl font-semibold">Film Search</h1>
       <SearchBar {...{ setSearchQuery }}></SearchBar>
       <SearchDropdown
         {...{ searchTypeObjArray, selectedSearchType, setSelectedSearchType }}

@@ -4,7 +4,7 @@ import TopFiveActors from "./TopFiveActors";
 
 const Home = () => {
   return (
-    <main className="bg-background min-h-screen pt-25">
+    <main className="bg-background flex min-h-screen flex-col gap-20 pt-30">
       <TopFiveFilms />
       <TopFiveActors />
     </main>
