@@ -37,6 +37,7 @@ const SearchResultsFilms = ({ data, searchResultsGridLayout }) => {
             {toTitleCase(option.title)}
           </div>
           <div className="text-center">{option.film_id}</div>
+          <div className="text-center">{option.rental_count}</div>
           <ButtonFilmDetails buttonFilmID={option.film_id} />
         </div>
       ))}

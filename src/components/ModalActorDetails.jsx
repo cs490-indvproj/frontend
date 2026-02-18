@@ -27,7 +27,6 @@ const ModalActorDetails = ({ open, modalActorID, onClose }) => {
     return null;
   }
   const topFilms = actorData ? actorData.top_films : [];
-  console.log(actorData);
   return createPortal(
     <>
       <div
@@ -64,6 +63,7 @@ const ModalActorDetails = ({ open, modalActorID, onClose }) => {
               data={topFilms}
               loading={loading}
               error={error}
+              searched={true}
             />
           </div>
         )}

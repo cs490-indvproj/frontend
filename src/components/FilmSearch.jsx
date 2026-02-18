@@ -13,6 +13,7 @@ const searchTypeObjArray = [
 const searchResultsGridLayout = [
   { id: "name", label: "Film Name" },
   { id: "id", label: "Film ID" },
+  { id: "rental_count", label: "Rental Count" },
   { id: "details", label: "See Details" },
 ];
 
@@ -27,7 +28,8 @@ const FilmSearch = () => {
   } else {
     requestPath = null;
   }
-  const { data, loading, error } = useGetFromAPI(requestPath);
+  const { data: filmDataDump, loading, error } = useGetFromAPI(requestPath);
+  const filmsData = filmDataDump ? filmDataDump.results : [];
 
   return (
     <section className="flex flex-col items-center justify-center gap-4">
@@ -37,8 +39,13 @@ const FilmSearch = () => {
         {...{ searchTypeObjArray, selectedSearchType, setSelectedSearchType }}
       ></SearchDropdown>
       <SearchResults
-        {...{ searchEntityType, searchResultsGridLayout, data, loading, error }}
-      ></SearchResults>
+        searchEntityType={searchEntityType}
+        searchResultsGridLayout={searchResultsGridLayout}
+        data={filmsData}
+        loading={loading}
+        error={error}
+        searched={searchQuery.length > 0}
+      />
     </section>
   );
 };

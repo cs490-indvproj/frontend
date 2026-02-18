@@ -14,6 +14,7 @@ const SearchResults = ({
   data,
   loading,
   error,
+  searched = false,
 }) => {
   let borderType =
     data && data?.length > 0 ? borderVariants.bordered : borderVariants.none;
@@ -36,7 +37,7 @@ const SearchResults = ({
             )}
           </>
         )}
-        {data?.length === 0 && (
+        {data?.length === 0 && searched && (
           <div className="bg-background flex items-center justify-center">
             <p className="text-accent bg-surface rounded-full p-2">
               No Results Found!
