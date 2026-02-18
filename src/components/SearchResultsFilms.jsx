@@ -1,5 +1,5 @@
 import React from "react";
-import FilmDetailsButton from "./FilmDetailsButton";
+import ButtonFilmDetails from "./ButtonFilmDetails";
 import toTitleCase from "../utils/formatting";
 
 const SearchResultsFilms = ({ data, searchResultsGridLayout }) => {
@@ -17,7 +17,7 @@ const SearchResultsFilms = ({ data, searchResultsGridLayout }) => {
             {toTitleCase(option.title)}
           </div>
           <div className="text-center">{option.film_id}</div>
-          <FilmDetailsButton buttonFilmID={option.film_id} />
+          <ButtonFilmDetails buttonFilmID={option.film_id} />
         </div>
       ))}
     </>

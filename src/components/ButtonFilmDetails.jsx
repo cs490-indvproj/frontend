@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import FilmDetailsModal from "./FilmDetailsModal";
+import ModalFilmDetails from "./ModalFilmDetails";
 
-const FilmDetailsButton = ({ buttonFilmID }) => {
+const ButtonFilmDetails = ({ buttonFilmID }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="text-center">
@@ -11,13 +11,13 @@ const FilmDetailsButton = ({ buttonFilmID }) => {
       >
         Details
       </button>
-      <FilmDetailsModal
+      <ModalFilmDetails
         modalFilmID={buttonFilmID}
         open={isOpen}
         onClose={() => setIsOpen(false)}
-      ></FilmDetailsModal>
+      />
     </div>
   );
 };
 
-export default FilmDetailsButton;
+export default ButtonFilmDetails;
