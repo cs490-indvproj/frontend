@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { API_BASE_URL } from "../../config.js";
 
-function useGetFromAPI(requestURI) {
+function useGetFromAPI(requestURI, refreshTrigger) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -26,7 +26,7 @@ function useGetFromAPI(requestURI) {
         if (!response.ok) {
           throw new Error(`HTTP error: Status ${response.status}`);
         }
-        let postsData = await response.json();
+        const postsData = await response.json();
         setData(postsData);
         setError(null);
       } catch (err) {
@@ -42,7 +42,7 @@ function useGetFromAPI(requestURI) {
     };
     getFunction();
     return () => controller.abort();
-  }, [requestURI]);
+  }, [requestURI, refreshTrigger]);
   return { data, loading, error };
 }
 export default useGetFromAPI;
