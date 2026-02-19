@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import useGetFromAPI from "../hooks/useGetFromAPI";
 import toTitleCase from "../utils/formatting";
 import XIcon from "../assets/XIcon.svg";
+import RentFilm from "./RentFilm";
 
 const ModalFilmDetails = ({ open, modalFilmID, onClose }) => {
   let requestPath;
@@ -11,8 +12,8 @@ const ModalFilmDetails = ({ open, modalFilmID, onClose }) => {
   } else {
     requestPath = null;
   }
-
-  const { data, loading, error } = useGetFromAPI(requestPath);
+  const [isRefresh, setIsRefresh] = useState(false);
+  const { data, loading, error } = useGetFromAPI(requestPath, isRefresh);
 
   if (!open) {
     return null;
@@ -25,8 +26,9 @@ const ModalFilmDetails = ({ open, modalFilmID, onClose }) => {
         onClick={onClose}
       />
       <div
-        className="text-foreground bg-surface fixed top-1/2 left-1/2 z-50 h-1/2
-          w-1/2 max-w-md -translate-x-1/2 -translate-y-1/2 transform p-5"
+        className="text-foreground bg-surface fixed top-1/2 left-1/2 z-50
+          h-[55%] w-[55%] max-w-md -translate-x-1/2 -translate-y-1/2 transform
+          p-5"
       >
         {loading && <div className="text-xl font-medium">Loading posts...</div>}
         {error && <div className="text-red-700">{error}</div>}
@@ -77,6 +79,13 @@ const ModalFilmDetails = ({ open, modalFilmID, onClose }) => {
               )}
               <li>Last Update: {data.last_update}</li>
             </ul>
+            <div className="mt-4">
+              <RentFilm
+                filmID={data.film_id}
+                setIsRefresh={setIsRefresh}
+                isRefresh={isRefresh}
+              />
+            </div>
           </div>
         )}
       </div>

@@ -18,7 +18,8 @@ const searchResultsGridLayout = [
 ];
 
 const searchEntityType = "films";
-
+const buttonPrompt = "Search";
+const placeholderPrompt = "";
 const FilmSearch = () => {
   const [selectedSearchType, setSelectedSearchType] = useState("title");
   const [searchQuery, setSearchQuery] = useState("");
@@ -34,10 +35,10 @@ const FilmSearch = () => {
   return (
     <section className="flex flex-col items-center justify-center gap-4">
       <h1 className="text-primary text-4xl font-semibold">Film Search</h1>
-      <SearchBar {...{ setSearchQuery }}></SearchBar>
+      <SearchBar {...{ setSearchQuery, buttonPrompt, placeholderPrompt }} />
       <SearchDropdown
         {...{ searchTypeObjArray, selectedSearchType, setSelectedSearchType }}
-      ></SearchDropdown>
+      />
       <SearchResults
         searchEntityType={searchEntityType}
         searchResultsGridLayout={searchResultsGridLayout}
