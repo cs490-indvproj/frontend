@@ -15,6 +15,8 @@ const CustomerSearch = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [startIndex, setStartIndex] = useState(0);
 
+  const [isRefresh, setIsRefresh] = useState(false);
+
   useEffect(() => {
     setStartIndex(0);
   }, [searchQuery, selectedSearchType]);
@@ -26,7 +28,11 @@ const CustomerSearch = () => {
   } else {
     requestPath = `/customers/all?offset=${startIndex}&limit=${rowsPerPage}`;
   }
-  const { data: customerDataDump, loading, error } = useGetFromAPI(requestPath);
+  const {
+    data: customerDataDump,
+    loading,
+    error,
+  } = useGetFromAPI(requestPath, isRefresh);
 
   const customerData = customerDataDump ? customerDataDump.results : [];
   totalDataCount = customerDataDump ? customerDataDump.results_count : 0;
@@ -43,6 +49,7 @@ const CustomerSearch = () => {
         loading={loading}
         error={error}
         searched={searchQuery.length > 0}
+        refreshSearchResults={() => setIsRefresh(!isRefresh)}
       />
       <div className="flex flex-row items-center justify-center gap-4">
         <button

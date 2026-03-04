@@ -14,7 +14,13 @@ const searchResultsGridLayout = [
   { id: "details", label: "See Details" },
 ];
 
-const CustomerSearchResults = ({ data, loading, error, searched = false }) => {
+const CustomerSearchResults = ({
+  data,
+  loading,
+  error,
+  searched = false,
+  refreshSearchResults,
+}) => {
   let borderType =
     data && data?.length > 0 ? borderVariants.bordered : borderVariants.none;
 
@@ -59,7 +65,10 @@ const CustomerSearchResults = ({ data, loading, error, searched = false }) => {
                   {toTitleCase(option.last_name)}
                 </div>
                 <div className="text-center">{option.customer_id}</div>
-                <CustomerButton buttonCustomerID={option.customer_id} />
+                <CustomerButton
+                  buttonCustomerID={option.customer_id}
+                  refreshSearchResults={refreshSearchResults}
+                />
               </div>
             ))}
           </div>

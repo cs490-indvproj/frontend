@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CustomerModal from "./CustomerModal";
 
-const CustomerButton = ({ buttonCustomerID }) => {
+const CustomerButton = ({ buttonCustomerID, refreshSearchResults }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="text-center">
@@ -15,6 +15,7 @@ const CustomerButton = ({ buttonCustomerID }) => {
         modalCustomerID={buttonCustomerID}
         open={isOpen}
         onClose={() => setIsOpen(false)}
+        refreshSearchResults={refreshSearchResults}
       />
     </div>
   );
