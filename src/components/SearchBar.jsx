@@ -4,7 +4,6 @@ const SearchBar = ({ setSearchQuery, buttonPrompt, placeholderPrompt }) => {
   function processSubmit(e) {
     e.preventDefault();
     setSearchQuery(e.target.query.value);
-    e.target.reset();
   }
   const bgVariants = {
     lighter:
