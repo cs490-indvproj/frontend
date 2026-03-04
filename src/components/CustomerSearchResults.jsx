@@ -1,6 +1,6 @@
 import React from "react";
 import toTitleCase from "../utils/formatting";
-import ButtonFilmDetails from "./ButtonFilmDetails";
+import CustomerButton from "./CustomerButton";
 
 const borderVariants = {
   none: "bg-surface border-secondary h-1/2 ",
@@ -45,7 +45,7 @@ const CustomerSearchResults = ({ data, loading, error, searched = false }) => {
             </div>
             {data.map((option) => (
               <div
-                key={option.actor_id}
+                key={option.customer_id}
                 className="border-secondary grid w-full items-center border
                   py-2"
                 style={{
@@ -59,9 +59,8 @@ const CustomerSearchResults = ({ data, loading, error, searched = false }) => {
                   {toTitleCase(option.last_name)}
                 </div>
                 <div className="text-center">{option.customer_id}</div>
-                <ButtonFilmDetails buttonFilmID={option.customer_id} />
+                <CustomerButton buttonCustomerID={option.customer_id} />
               </div>
-              // fix buttonfilmdetails
             ))}
           </div>
         )}

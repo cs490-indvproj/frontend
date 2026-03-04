@@ -9,7 +9,7 @@ const searchTypeObjArray = [
   { id: "id", label: "Customer ID" },
 ];
 
-const FilmSearch = () => {
+const CustomerSearch = () => {
   const rowsPerPage = 12;
   const [selectedSearchType, setSelectedSearchType] = useState("name");
   const [searchQuery, setSearchQuery] = useState("");
@@ -74,4 +74,4 @@ const FilmSearch = () => {
   );
 };
 
-export default FilmSearch;
+export default CustomerSearch;
