@@ -275,7 +275,7 @@ const CustomerEditorModal = ({
                     name="address.city"
                     value={formData.address.city}
                     onChange={processChange}
-                    placeholder="City"
+                    placeholder="Washington"
                     className="text-foreground border-secondary bg-background
                       w-full rounded-full border px-4"
                   ></input>
@@ -284,7 +284,7 @@ const CustomerEditorModal = ({
                     name="address.district"
                     value={formData.address.district}
                     onChange={processChange}
-                    placeholder="Washington"
+                    placeholder="DC"
                     className="text-foreground border-secondary bg-background
                       w-full rounded-full border px-4"
                   ></input>
@@ -293,7 +293,7 @@ const CustomerEditorModal = ({
                     name="address.postal_code"
                     value={formData.address.postal_code}
                     onChange={processChange}
-                    placeholder="DC"
+                    placeholder="20003"
                     className="text-foreground border-secondary bg-background
                       w-full rounded-full border px-4"
                   ></input>
