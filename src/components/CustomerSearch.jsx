@@ -3,6 +3,7 @@ import CustomerSearchBar from "./CustomerSearchBar";
 import SearchDropdown from "./SearchDropdown";
 import CustomerSearchResults from "./CustomerSearchResults";
 import useGetFromAPI from "../hooks/useGetFromAPI";
+import CustomerEditorModal from "./CustomerEditorModal";
 
 const searchTypeObjArray = [
   { id: "name", label: "Customer Name" },
@@ -16,6 +17,8 @@ const CustomerSearch = () => {
   const [startIndex, setStartIndex] = useState(0);
 
   const [isRefresh, setIsRefresh] = useState(false);
+
+  const [isAddActive, setIsAddActive] = useState(false);
 
   useEffect(() => {
     setStartIndex(0);
@@ -77,6 +80,17 @@ const CustomerSearch = () => {
           Next
         </button>
       </div>
+      <button
+        className="btn-std item-center justify-center px-3"
+        onClick={() => setIsAddActive(true)}
+      >
+        Add New Customer
+      </button>
+      <CustomerEditorModal
+        open={isAddActive}
+        onClose={() => setIsAddActive(false)}
+        refreshSearchResults={() => setIsRefresh(!isRefresh)}
+      />
     </section>
   );
 };

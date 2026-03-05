@@ -6,6 +6,7 @@ import useGetFromAPI from "../hooks/useGetFromAPI";
 import usePatchToAPI from "../hooks/usePatchToAPI";
 import useDeleteFromAPI from "../hooks/useDeleteFromAPI";
 import toTitleCase from "../utils/formatting";
+import CustomerEditorModal from "./CustomerEditorModal";
 import XIcon from "../assets/XIcon.svg";
 
 const CustomerModal = ({
@@ -15,6 +16,8 @@ const CustomerModal = ({
   refreshSearchResults,
 }) => {
   const [isRefresh, setIsRefresh] = useState(false);
+  const [isEditActive, setIsEditActive] = useState(false);
+
   const {
     patchFunction,
     loading: returnLoading,
@@ -122,6 +125,12 @@ const CustomerModal = ({
                   )}
                 </h1>
                 <button
+                  className="btn-std item-center justify-center px-3"
+                  onClick={() => setIsEditActive(true)}
+                >
+                  Edit Customer
+                </button>
+                <button
                   className="btn-std hover:text-foreground px-2 py-1
                     hover:bg-red-600"
                   disabled={deleteLoading}
@@ -145,6 +154,15 @@ const CustomerModal = ({
 
             <CustomerRentals
               {...{ rentalData, returnLoading, patchReturnRental }}
+            />
+            <CustomerEditorModal
+              open={isEditActive}
+              customerData={customerData}
+              onClose={() => setIsEditActive(false)}
+              refreshSearchResults={() => {
+                setIsRefresh(!isRefresh);
+                refreshSearchResults();
+              }}
             />
           </div>
         )}

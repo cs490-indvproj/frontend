@@ -6,7 +6,7 @@ const searchResultsGridLayout = [
   { id: "id", label: "Film ID" },
   { id: "return", label: "Return Status" },
 ];
-
+let key_val = 0;
 const CustomerRentals = ({ rentalData, returnLoading, patchReturnRental }) => {
   return (
     <div
@@ -22,7 +22,7 @@ const CustomerRentals = ({ rentalData, returnLoading, patchReturnRental }) => {
       >
         {searchResultsGridLayout.map((option) => (
           <div
-            key={option.id}
+            key={key_val++}
             className={
               `border-secondary h-full w-full content-center items-center border
               py-2 text-center` +
@@ -37,7 +37,7 @@ const CustomerRentals = ({ rentalData, returnLoading, patchReturnRental }) => {
       <div className="flex-grow overflow-y-auto">
         {[...rentalData].reverse().map((option) => (
           <div
-            key={option.film.film_id}
+            key={key_val++}
             className="border-secondary grid w-full items-center border py-2"
             style={{
               gridTemplateColumns: `repeat(${searchResultsGridLayout.length + 3}, minmax(0, 1fr))`,
